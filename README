@@ -2,3 +2,9 @@
 Software that I use and that doesn't have (yet) the needed features or versions in standard gentoo portage tree.
 
 USE AT YOUR OWN RISK! NOT EXTENSIVELY TESTED.
+
+List of available packages (and why they are here):
+- app-emulation/libguestfs
+  - version containing 'selinux-relabel' command
+- app-emulation/libguestfs-appliance
+  - dependency of never app-emulation/libguestfs
