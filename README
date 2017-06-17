@@ -8,3 +8,5 @@ List of available packages (and why they are here):
   - version containing 'selinux-relabel' command
 - app-emulation/libguestfs-appliance
   - dependency of never app-emulation/libguestfs
+- app-emulation/fast-vm
+  - release version of fast-vm
