@@ -10,3 +10,5 @@ List of available packages (and why they are here):
   - dependency of never app-emulation/libguestfs
 - app-emulation/fast-vm
   - release version of fast-vm
+- sys-cluster/fence-virt
+  - dirty build of fence-virtd (no service/unit files), it just compiles
