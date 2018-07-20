@@ -8,7 +8,7 @@ inherit linux-info
 
 DESCRIPTION="Script for defining VMs from images provided in thin LVM pool"
 HOMEPAGE="https://www.famera.cz/blog/fast-vm/about.html"
-SRC_URI="https://github.com/OndrejHome/fast-vm/archive/1.2.1.tar.gz"
+SRC_URI="https://github.com/OndrejHome/fast-vm/archive/1.4.tar.gz"
 
 LICENSE="GPLv3"
 SLOT="0"
@@ -27,7 +27,7 @@ RDEPEND="
 	dev-libs/libxml2
 	sys-fs/lvm2[thin]
 	curl? ( net-misc/curl )
-	hack-file-dependencies? ( 
+	hack-file-dependencies? (
 		>=app-emulation/libguestfs-1.36.4
 		>=app-emulation/libguestfs-appliance-1.36.1
 		app-emulation/libvirt[virt-network,qemu]
