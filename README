@@ -12,3 +12,11 @@ List of available packages (and why they are here):
   - release version of fast-vm
 - sys-cluster/fence-virt
   - dirty build of fence-virtd (no service/unit files), it just compiles
+
+To add this repo you can use following commands that will download overlay definition
+into /etc/portage/repos.conf/ directory. Note that you will need to have installed
+the 'dev-vcs/git' to be able to download this overlay.
+
+# mkdir /etc/portage/repos.conf/
+# curl https://raw.githubusercontent.com/OndrejHome/ondrejhome-gentoo-overlay/master/ondrejhome-overlay.conf > /etc/portage/repos.conf/ondrejhome-overlay.conf
+# emaint sync --repo ondrejhome
