@@ -51,6 +51,7 @@ src_configure() {
 		--disable-upstart \
 		--without-profiling \
 		--without-coverage \
+		--with-configdir=/etc/pacemaker \
 		$(use_enable systemd) \
 		$(use_with hardened hardening) \
 		$(use_with acl) \
@@ -65,4 +66,7 @@ src_install() {
 	#newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
 	# remove tests - TODO make into variable
 	rm -rf "${D}"/usr/share/pacemaker/tests
+	# copy sysconfig files to /etc/pacemaker
+	cp -a "${S}/daemons/pacemakerd/pacemaker.sysconfig" "${D}/etc/pacemaker/pacemaker"
+	cp -a "${S}/tools/crm_mon.sysconfig" "${D}/etc/pacemaker/crm_mon"
 }
