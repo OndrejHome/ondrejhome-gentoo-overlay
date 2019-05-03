@@ -12,6 +12,12 @@ List of available packages (and why they are here):
   - release version of fast-vm
 - sys-cluster/fence-virt
   - dirty build of fence-virtd (no service/unit files), it just compiles
+- sys-cluster/kronosnet
+  - dependency for >=sys-cluster/corosync-3.0
+- sys-cluster/corosync-3.*
+  - dependency for >=sys-cluster/pacemaker-2.0
+- sys-cluster/pacemaker-2.*
+  - Pacemaker 2.* minimal
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
