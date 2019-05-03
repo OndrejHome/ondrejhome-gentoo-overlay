@@ -42,6 +42,7 @@ src_configure() {
 	econf_opts=(
 		--localstatedir=/var \
 		--docdir=/usr/share/doc/${PF} \
+		--with-initconfigdir=/etc/corosync \
 		$(use_enable watchdog) \
 		$(use_enable systemd) \
 		$(use_enable snmp) \
@@ -69,6 +70,9 @@ src_install() {
 	use static-libs || rm -rf "${D}"/usr/$(get_libdir)/*.{,l}a || die
 
 	keepdir /var/log/cluster
+
+	# copy sysconfig files to /etc/corosync
+	cp -a "${S}/init/corosync.sysconfig.example" "${D}/etc/corosync/corosync"
 }
 
 pkg_postinst() {
