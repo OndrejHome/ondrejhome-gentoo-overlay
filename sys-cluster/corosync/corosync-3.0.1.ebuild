@@ -58,8 +58,9 @@ src_install() {
 
 	if use systemd; then
 		rm "${D}"/lib/systemd/system/corosync-notifyd.service || die
+	else
+		rm "${D}"/etc/init.d/corosync-notifyd || die
 	fi
-	rm "${D}"/etc/init.d/corosync-notifyd || die
 
 	insinto /etc/logrotate.d
 	newins "${FILESDIR}"/${PN}.logrotate ${PN}
