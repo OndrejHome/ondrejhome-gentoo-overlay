@@ -62,8 +62,8 @@ src_configure() {
 src_install() {
 	default
 	rm -rf "${D}"/etc/init.d
-	# TODO test on non-systemd system - create pacemker and pacemaker_remote init.d/openrc files
-	#newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
+	# TODO pacemaker_remote init.d/openrc files
+	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
 	# remove tests - TODO make into variable
 	rm -rf "${D}"/usr/share/pacemaker/tests
 	# copy sysconfig files to /etc/pacemaker

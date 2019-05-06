@@ -54,8 +54,7 @@ src_configure() {
 
 src_install() {
 	default
-	# TODO test on non-systemd system - create corosync init.d/openrc files
-	#newinitd "${FILESDIR}"/${PN}.initd ${PN}
+	newinitd "${FILESDIR}"/${PN}.initd ${PN}
 
 	if use systemd; then
 		rm "${D}"/lib/systemd/system/corosync-notifyd.service || die

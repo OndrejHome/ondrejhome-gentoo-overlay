@@ -1,0 +1,32 @@
+#!/sbin/openrc-run
+# Copyright 2019 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+name="corosync"
+description="Corosync Cluster Engine"
+command=/usr/sbin/corosync
+command_args="${corosync_args}"
+
+PIDFILE=/var/run/corosync.pid
+
+depend() {
+        need net
+        use syslog
+}
+
+start() {
+        nc=0
+        ebegin "Starting Corosync Cluster Engine"
+
+	mkdir -p /var/run
+
+        start-stop-daemon --start -q --exec $command $COROSYNC_OPTIONS \
+                --pidfile "${PIDFILE}" --make-pidfile --background
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping Corosync Cluster Engine"
+        start-stop-daemon --stop -q --pidfile "${PIDFILE}"
+        eend $?
+}
