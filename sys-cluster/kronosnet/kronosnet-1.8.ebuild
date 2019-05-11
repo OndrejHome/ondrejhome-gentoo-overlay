@@ -7,27 +7,28 @@ AUTOTOOLS_AUTORECONF=1
 
 inherit autotools-utils
 
-DESCRIPTION="Kronosnet (knet) is a network abstraction layer designed for High Availability use cases"
+DESCRIPTION="Kronosnet (knet) - network abstraction layer for High Availability use cases"
 HOMEPAGE="https://kronosnet.org/"
 SRC_URI="https://github.com/kronosnet/kronosnet/archive/v${PV}.tar.gz  -> ${P}.tar.gz"
 
-LICENSE="GPL-2.0 LGPL-2.0"
+LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="docs sctp lzo nss +openssl +zlib +lz4 +bzip2"
 
-DEPEND="
-		dev-libs/libnl
+DEPEND="${RDEPEND}
+		docs? ( app-doc/doxygen )
+"
+RDEPEND="
+		dev-libs/libnl:3
 		lzo? ( dev-libs/lzo )
 		sctp? ( net-misc/lksctp-tools )
-		docs? ( app-doc/doxygen )
 		nss? ( dev-libs/nss )
-		openssl? ( dev-libs/openssl )
+		openssl? ( dev-libs/openssl:0 )
 		zlib? ( sys-libs/zlib )
 		lz4? ( app-arch/lz4 )
 		bzip2? ( app-arch/bzip2 )
 "
-RDEPEND="${DEPEND}"
 BDEPEND=""
 
 src_prepare() {
