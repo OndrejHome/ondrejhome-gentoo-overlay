@@ -16,16 +16,14 @@ SRC_URI="https://github.com/ClusterLabs/${PN}/archive/${MY_P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="acl snmp static-libs systemd hardened"
+IUSE="acl static-libs systemd hardened nagios"
 
 DEPEND="${PYTHON_DEPS}
 	app-text/docbook-xsl-stylesheets
 	dev-libs/libxslt
 	sys-cluster/cluster-glue
 	>=sys-cluster/libqb-0.14.0
-	sys-cluster/resource-agents
 	>=sys-cluster/corosync-3.0
-	snmp? ( net-analyzer/net-snmp )
 "
 RDEPEND="${DEPEND}"
 
@@ -47,15 +45,14 @@ src_configure() {
 		--disable-dependency-tracking \
 		--disable-fatal-warnings \
 		--with-corosync \
-		--without-nagios \
 		--disable-upstart \
 		--without-profiling \
 		--without-coverage \
 		--with-configdir=/etc/pacemaker \
+		$(use_with nagios) \
 		$(use_enable systemd) \
 		$(use_with hardened hardening) \
 		$(use_with acl) \
-		$(use_with snmp) \
 		$(use_enable static-libs static)
 }
 
