@@ -66,5 +66,13 @@ src_install() {
 	insinto /etc/default
 	newins "${S}/daemons/pacemakerd/pacemaker.sysconfig" "pacemaker"
 	newins "${S}/tools/crm_mon.sysconfig" "crm_mon"
+	# keep the configuration and log directories
+	keepdir /var/lib/pacemaker/blackbox /var/lib/pacemaker/cib /var/lib/pacemaker/cores /var/lib/pacemaker/pengine
+	keepdir /var/log/pacemaker /var/log/pacemaker/bundles
 }
+
+pkg_preinst() {
+		# create user and group for pacemaker
+		enewgroup haclient
+		enewuser hacluster -1 -1 -1 "haclient"
 }
