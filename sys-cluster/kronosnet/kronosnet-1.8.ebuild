@@ -14,7 +14,7 @@ SRC_URI="https://github.com/kronosnet/kronosnet/archive/v${PV}.tar.gz  -> ${P}.t
 LICENSE="GPL-2 LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="docs sctp lzo nss +openssl +zlib +lz4 +bzip2"
+IUSE="docs sctp lzo +nss openssl +zlib +lz4 +bzip2"
 
 DEPEND="${RDEPEND}
 		docs? ( app-doc/doxygen )
