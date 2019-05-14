@@ -38,7 +38,6 @@ src_prepare() {
 }
 
 src_configure() {
-	# appends lib to localstatedir automatically
 	econf \
 		--libdir=/usr/$(get_libdir) \
 		--localstatedir=/var \
@@ -48,7 +47,7 @@ src_configure() {
 		--disable-upstart \
 		--without-profiling \
 		--without-coverage \
-		--with-configdir=/etc/pacemaker \
+		--with-configdir=/etc/default \
 		$(use_with nagios) \
 		$(use_enable systemd) \
 		$(use_with hardened hardening) \
@@ -58,12 +57,14 @@ src_configure() {
 
 src_install() {
 	default
+	# delete the provided initd files and use openRC versions
 	rm -rf "${D}"/etc/init.d
-	# TODO pacemaker_remote init.d/openrc files
+	# TODO 'pacemaker_remote' openRC file
+	# TODO 'crm_mon' openRC file
 	newinitd "${FILESDIR}/${PN}.initd" ${PN} || die
-	# remove tests - TODO make into variable
-	rm -rf "${D}"/usr/share/pacemaker/tests
-	# copy sysconfig files to /etc/pacemaker
-	cp -a "${S}/daemons/pacemakerd/pacemaker.sysconfig" "${D}/etc/pacemaker/pacemaker"
-	cp -a "${S}/tools/crm_mon.sysconfig" "${D}/etc/pacemaker/crm_mon"
+	# copy sysconfig files to /etc/default
+	insinto /etc/default
+	newins "${S}/daemons/pacemakerd/pacemaker.sysconfig" "pacemaker"
+	newins "${S}/tools/crm_mon.sysconfig" "crm_mon"
+}
 }
