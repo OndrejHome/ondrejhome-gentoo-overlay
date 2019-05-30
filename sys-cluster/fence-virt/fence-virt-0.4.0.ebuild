@@ -11,7 +11,7 @@ SRC_URI=""
 DESCRIPTION="Fencing agent for virtual machines."
 HOMEPAGE="http://fence-virt.sourceforge.net"
 
-LICENSE="GPLv2+"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
