@@ -18,6 +18,8 @@ List of available packages (and why they are here):
   - dependency for >=sys-cluster/pacemaker-2.0
 - sys-cluster/pacemaker-2.*
   - Pacemaker 2.* minimal
+- sys-cluster/pcs-0.10.*
+  - pacemaker 2.x configuration tool
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
