@@ -19,6 +19,8 @@
 		<flag name="lzo">Support protocol compression using <pkg>app-arch/lzo</pkg></flag>
 		<flag name="bzip2">Support protocol compression using <pkg>app-arch/bzip2</pkg></flag>
 		<flag name="zlib">Support protocol compression using <pkg>sys-libs/zlib</pkg></flag>
+		<flag name="zstd">Support protocol compression using <pkg>app-arch/zstd</pkg></flag>
+		<flag name="libnozzle">Build with libnozzle library</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">kronosnet/kronosnet</remote-id>
