@@ -11,6 +11,7 @@
 	</maintainer>
 	<use>
 		<flag name="watchdog">Enable watchdog support in corosync</flag>
+		<flag name="nozzle">Support for nozzle</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">corosync/corosync</remote-id>
