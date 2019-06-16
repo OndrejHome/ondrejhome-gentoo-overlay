@@ -9,7 +9,7 @@ inherit python-utils-r1 systemd
 
 DESCRIPTION="Pacemaker/Corosync Configuration System"
 HOMEPAGE="https://github.com/ClusterLabs/pcs"
-SRC_URI="https://github.com/ClusterLabs/pcs/archive/0.10.1.tar.gz"
+SRC_URI="https://github.com/ClusterLabs/pcs/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
