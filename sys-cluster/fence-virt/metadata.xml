@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ondrej-gentoo@famera.cz</email>
+		<name>Ondrej Faměra</name>
+	</maintainer>
+	<longdescription>
+		Virtual Machine I/O Fencing.
+	</longdescription>
+	<use>
+	</use>
+	<upstream>
+		<remote-id type="github">ClusterLabs/fence-virt</remote-id>
+	</upstream>
+</pkgmetadata>
