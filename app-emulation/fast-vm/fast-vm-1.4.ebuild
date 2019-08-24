@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=6
+EAPI=7
 
 inherit linux-info
 
@@ -12,7 +11,7 @@ SRC_URI="https://github.com/OndrejHome/fast-vm/archive/1.4.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="+hack-file-dependencies +curl +bash-completion"
 
 # built time dependencies
@@ -47,6 +46,6 @@ pkg_setup() {
 		~CONFIG_NF_NAT_IPV4
 		~CONFIG_NF_NAT_MASQUERADE_IPV4"
 	if [[ -n ${CONFIG_CHECK} ]]; then
-                linux-info_pkg_setup
-        fi
+		linux-info_pkg_setup
+	fi
 }
