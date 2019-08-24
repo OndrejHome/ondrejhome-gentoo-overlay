@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ondrej-gentoo@famera.cz</email>
+		<name>Ondrej Faměra</name>
+	</maintainer>
+	<longdescription>
+		fast-vm provides command-line interface to create virtual machines (VMs) in libvirt,
+		based on imported disks in LVM and XML templates.
+	</longdescription>
+	<use>
+		<flag name="hack-file-dependencies">Install packages required by commonly used hack files</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">OndrejHome/fast-vm</remote-id>
+	</upstream>
+</pkgmetadata>
