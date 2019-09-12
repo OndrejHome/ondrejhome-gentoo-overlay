@@ -4,6 +4,8 @@ Software that I use and that doesn't have (yet) the needed features or versions 
 USE AT YOUR OWN RISK! NOT EXTENSIVELY TESTED.
 
 List of available packages (and why they are here):
+- app-admin/ansible-lint
+  - version 4.1.*
 - app-emulation/libguestfs
   - version containing 'selinux-relabel' command
 - app-emulation/libguestfs-appliance
