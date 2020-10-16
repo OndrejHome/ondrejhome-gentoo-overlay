@@ -13,7 +13,7 @@ List of available packages (and why they are here):
 - app-emulation/fast-vm
   - release version of fast-vm
 - sys-cluster/fence-virt
-  - dirty build of fence-virtd (no service/unit files), it just compiles
+  - from version 1.0.0 there are proper systemd unit file and init file
 - sys-cluster/kronosnet
   - dependency for >=sys-cluster/corosync-3.0
 - sys-cluster/corosync-3.*

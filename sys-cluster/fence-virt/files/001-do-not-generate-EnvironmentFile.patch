@@ -1,0 +1,11 @@
+diff --git a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -46,7 +46,6 @@
+ 	SBINDIR="@sbindir@"; \
+ 	INITCONFDIR="@initconfdir@"; \
+ 	cat $^ > $@ ; \
+-	echo "EnvironmentFile=-$$INITCONFDIR/fence_virtd" >> $@ ;\
+ 	echo "ExecStart=$$SBINDIR/fence_virtd \$$FENCE_VIRTD_ARGS" >> $@
+ 
+ ## make rpm/srpm section.
