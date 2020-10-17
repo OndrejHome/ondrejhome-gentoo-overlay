@@ -5,7 +5,7 @@ USE AT YOUR OWN RISK! NOT EXTENSIVELY TESTED.
 
 List of available packages (and why they are here):
 - app-admin/ansible-lint
-  - version 4.1.*
+  - version 4.1.*, 4.3.0
 - app-emulation/libguestfs
   - version containing 'selinux-relabel' command
 - app-emulation/libguestfs-appliance
