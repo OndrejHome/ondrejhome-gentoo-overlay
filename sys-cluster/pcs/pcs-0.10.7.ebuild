@@ -62,6 +62,14 @@ PATCHES=( "${FILESDIR}/remove-ruby-bundle-path.patch" "${FILESDIR}/openrc-0.10.7
 
 S="${WORKDIR}/all/${P}"
 
+src_prepare() {
+	# unless support for SNMP was requested remove SNMP related actions
+	if ! use snmp; then
+		eapply "${FILESDIR}/remove_snmp.patch"
+	fi
+	default
+}
+
 src_compile() {
 	return
 }
