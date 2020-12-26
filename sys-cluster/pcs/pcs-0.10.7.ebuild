@@ -89,11 +89,11 @@ src_install() {
 	# use Debian style systemd unit (with config in /etc/default/pcsd)
 	if use systemd ; then
 		systemd_newunit "${S}/pcsd/pcsd.service.debian" "pcsd.service"
-		systemd_newunit "${S}/pcsd/pcsd-ruby.service" "pcsd-daemon.service"
+		systemd_newunit "${S}/pcsd/pcsd-ruby.service" "pcsd-ruby.service"
 	fi
 	# custom service file for openRC
 	newinitd "${FILESDIR}/pcsd.initd" pcsd || die
-	newinitd "${FILESDIR}/pcsd-daemon.initd" pcsd-daemon || die
+	newinitd "${FILESDIR}/pcsd-ruby.initd" pcsd-ruby || die
 
 	# move config files to right places - we use debian-style /etc/default
 	cp -a "${S}/pcs/settings.py.debian" "${D}/usr/lib/pcs/settings.py"
