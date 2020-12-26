@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="person">
-		<email>ondrej-gentoo@famera.cz</email>
-		<name>Ondrej Faměra</name>
+		<email>andrea.postiglione@gmail.com</email>
+		<name>Andrea Postiglione</name>
 	</maintainer>
 	<longdescription>
 		Pcs is a Corosync and Pacemaker configuration tool. It permits users to easily view, modify and 

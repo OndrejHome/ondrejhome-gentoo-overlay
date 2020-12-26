@@ -2,20 +2,12 @@
 # Copyright 2019-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-name="pcsd"
-description="Pacemaker & Corosync configuration daemon"
-command=/usr/sbin/pcsd
+name="pcsd-daemon"
+description="PCS GUI and remote configuration interface (Ruby)"
+command=/usr/lib/pcsd/pcsd
 command_args="${pcsd_args}"
 
 PIDFILE=/var/run/$name.pid
-
-# load defaults
-if [ -f /etc/default/pcsd ]; then source /etc/default/pcsd; fi
-
-depend() {
-        need net pcsd-daemon
-        use syslog
-}
 
 start() {
         nc=0
