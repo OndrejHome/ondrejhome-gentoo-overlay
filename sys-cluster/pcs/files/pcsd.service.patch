@@ -1,0 +1,24 @@
+--- a/pcsd/pcsd.service.debian
++++ b/pcsd/pcsd.service.debian
+@@ -4,6 +4,8 @@
+ Documentation=man:pcs(8)
+ Requires=network-online.target
+ After=network-online.target
++Requires=pcsd-ruby.service
++After=pcsd-ruby.service
+ 
+ [Service]
+ EnvironmentFile=/etc/default/pcsd
+
+--- a/pcsd/pcsd-ruby.service
++++ a/pcsd/pcsd-ruby.service
+@@ -10,7 +10,7 @@
+ PartOf=pcsd.service
+ 
+ [Service]
+-EnvironmentFile=/etc/sysconfig/pcsd
++EnvironmentFile=/etc/default/pcsd
+ Environment=GEM_HOME=/usr/lib/pcsd/vendor/bundle/ruby
+ # This file holds the selinux context
+ ExecStart=/usr/lib/pcsd/pcsd
+
