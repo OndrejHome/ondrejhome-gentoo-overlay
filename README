@@ -16,6 +16,8 @@ List of available packages (and why they are here):
   - Pacemaker 2.* minimal
 - sys-cluster/pcs-0.10.*
   - pacemaker 2.x configuration tool
+- sys-apps/mmc-utils-9999
+  - copy of https://data.gpo.zugaina.org/kaa/sys-apps/mmc-utils/
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
