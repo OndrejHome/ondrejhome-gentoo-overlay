@@ -6,16 +6,10 @@ USE AT YOUR OWN RISK! NOT EXTENSIVELY TESTED.
 List of available packages (and why they are here):
 - app-admin/ansible-lint
   - version 4.1.*, 4.3.0
-- app-emulation/libguestfs
-  - version containing 'selinux-relabel' command
-- app-emulation/libguestfs-appliance
-  - dependency of never app-emulation/libguestfs
 - app-emulation/fast-vm
   - release version of fast-vm
 - sys-cluster/fence-virt
   - from version 1.0.0 there are proper systemd unit file and init file
-- sys-cluster/kronosnet
-  - dependency for >=sys-cluster/corosync-3.0
 - sys-cluster/corosync-3.*
   - dependency for >=sys-cluster/pacemaker-2.0
 - sys-cluster/pacemaker-2.*
