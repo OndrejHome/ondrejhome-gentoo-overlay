@@ -84,7 +84,7 @@ COMMON_URI="
 
 	EGIT_REPO_URI="https://github.com/OndrejHome/genkernel.git"
 	EGIT_BRANCH="efibootmgr"
-	EGIT_COMMIT="33c12f5298a2a5e2c7b28ea808649997ea172380"
+	EGIT_COMMIT="0c7f1a4322ec24ff1bc89d4d4209f8cbbdc41fbe"
 	inherit git-r3
 	S="${WORKDIR}/${P}"
 	SRC_URI="${COMMON_URI}"
