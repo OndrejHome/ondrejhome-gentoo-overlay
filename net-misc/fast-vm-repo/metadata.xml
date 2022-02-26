@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+        <maintainer type="person">
+                <email>ondrej-gentoo@famera.cz</email>
+                <name>Ondrej Faměra</name>
+        </maintainer>
+        <longdescription>
+                Script for listing and importing fast-vm images from repositories.
+        </longdescription>
+        <use>
+                <flag name="public-repositories">Repository '.repo' files for public repositories.</flag>
+        </use>
+        <upstream>
+                <remote-id type="github">OndrejHome/fast-vm-repo</remote-id>
+        </upstream>
+</pkgmetadata>
