@@ -22,6 +22,8 @@ List of available packages (and why they are here):
   - fix `/etc/sysconfig` -> `/etc/conf.d`
 - net-misc/fast-vm-repo
   - release version of fast-vm-repo
+- app-emulation/virt-manager
+  - version 4.0.0-r1 - added missing dependecy for `virt-install` - https://bugs.gentoo.org/846821
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
