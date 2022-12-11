@@ -22,8 +22,6 @@ List of available packages (and why they are here):
   - fix `/etc/sysconfig` -> `/etc/conf.d`
 - net-misc/fast-vm-repo
   - release version of fast-vm-repo
-- app-emulation/virt-manager
-  - version 4.0.0-r1 - added missing dependecy for `virt-install` - https://bugs.gentoo.org/846821
 - sys-firmware/radxa-rock5b-firmware
   - (arm64) packaged binary firmware blobk for Mali 620 GPU on Radxa ROCK5B SBC
 - media-libs/mesa
