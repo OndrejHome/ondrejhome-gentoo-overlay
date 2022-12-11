@@ -32,5 +32,11 @@ into /etc/portage/repos.conf/ directory. Note that you will need to have install
 the 'dev-vcs/git' to be able to download this overlay.
 
 # mkdir /etc/portage/repos.conf/
-# curl https://raw.githubusercontent.com/OndrejHome/ondrejhome-gentoo-overlay/master/ondrejhome-overlay.conf > /etc/portage/repos.conf/ondrejhome-overlay.conf
+# curl https://raw.githubusercontent.com/OndrejHome/ondrejhome-gentoo-overlay/master/ondrejhome.conf > /etc/portage/repos.conf/ondrejhome.conf
+# emaint sync --repo ondrejhome
+
+OR use the eselect-repository command (`app-eselect/eselect-repository`)
+# eselect repository add ondrejhome git https://github.com/OndrejHome/ondrejhome-gentoo-overlay
+Adding ondrejhome to /etc/portage/repos.conf/eselect-repo.conf ...
+Repository ondrejhome added
 # emaint sync --repo ondrejhome
