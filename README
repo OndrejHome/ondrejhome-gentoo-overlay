@@ -14,8 +14,6 @@ List of available packages (and why they are here):
   - copy of https://data.gpo.zugaina.org/kaa/sys-apps/mmc-utils/
 - sys-kernel/genkernel-4.2.3_p1
   - EXPERIMENTAL - custom build based on https://github.com/OndrejHome/genkernel.git (branch `efibootmgr`)
-- net-firewall/firewalld-0.9.3
-  - fix `/etc/sysconfig` -> `/etc/conf.d`
 - net-misc/fast-vm-repo
   - release version of fast-vm-repo
 - sys-firmware/radxa-rock5b-firmware
