@@ -13,7 +13,7 @@ inherit check-reqs
 DESCRIPTION="VM appliance disk image used in libguestfs package"
 HOMEPAGE="https://libguestfs.org/"
 SRC_URI="
-	x86?	( https://kr.famera.cz/fastvm-images/appliance-1.50.1-x86_64.tar.xz )
+	amd64?	( https://kr.famera.cz/fastvm-images/appliance-1.50.1-x86_64.tar.xz )
 	arm64?	( https://kr.famera.cz/fastvm-images/appliance-1.50.1-aarch64.tar.xz )"
 S="${WORKDIR}"
 
