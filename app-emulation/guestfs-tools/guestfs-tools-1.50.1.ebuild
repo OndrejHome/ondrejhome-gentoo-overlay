@@ -52,6 +52,7 @@ COMMON_DEPEND="
 		dev-perl/String-ShellQuote
 		test? ( virtual/perl-Test-Simple )
 	)
+	sys-libs/libosinfo
 "
 # Some OCaml is always required
 # bug #729674
