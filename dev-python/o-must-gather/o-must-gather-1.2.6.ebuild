@@ -20,7 +20,7 @@ KEYWORDS="amd64 ~arm64"
 
 RDEPEND="
 		dev-python/pyyaml
-		=dev-python/click-7.1.2
+		!>dev-python/click-7.1.2
 		dev-python/cffi
 		dev-python/pycparser
 		dev-python/cryptography
