@@ -26,6 +26,8 @@ List of available packages (and why they are here):
   - (arm64) packaged binary firmware blobk for Mali 620 GPU on Radxa ROCK5B SBC
 - media-libs/mesa
   - (arm64) panfork/mesa build with some support for Mali G610 GPU
+- gui-apps/waypipe
+  - (x86_64, arm64) 0.8.6 release
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
