@@ -32,6 +32,8 @@ List of available packages (and why they are here):
   - packaging of https://github.com/kxr/o-must-gather/tree/v1 version 1.2.6
 - dev-python/click
   - lower version dependency for `dev-python/o-must-gather`
+- dev-python/flask/
+  - lower version dependency (based on ebuild 2.2.3) for `app-text/grip` (to allow `app-text/grip` and `dev-python/o-must-gather` at same time)
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
