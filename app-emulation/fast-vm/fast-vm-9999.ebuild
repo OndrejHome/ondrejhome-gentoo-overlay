@@ -12,7 +12,7 @@ HOMEPAGE="https://www.famera.cz/blog/fast-vm/about.html"
 inherit git-r3
 EGIT_REPO_URI="https://github.com/ondrejhome/fast-vm.git"
 SRC_URI=""
-EGIT_BRANCH="develop"
+EGIT_BRANCH="master"
 
 LICENSE="GPL-3+"
 SLOT="0"
