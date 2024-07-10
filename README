@@ -26,8 +26,6 @@ List of available packages (and why they are here):
   - (arm64) packaged binary firmware blobk for Mali 620 GPU on Radxa ROCK5B SBC
 - media-libs/mesa
   - (arm64) panfork/mesa build with some support for Mali G610 GPU
-- gui-apps/waypipe
-  - (x86_64, arm64) 0.8.6 release
 - dev-python/o-must-gather
   - packaging of https://github.com/kxr/o-must-gather/tree/v1 version 1.2.6
 - dev-python/click
