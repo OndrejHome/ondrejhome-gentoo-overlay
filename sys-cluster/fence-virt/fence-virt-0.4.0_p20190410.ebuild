@@ -1,7 +1,7 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=8
 
 EGIT_REPO_URI="https://github.com/ClusterLabs/fence-virt"
 EGIT_COMMIT="c2ca768a8e57a73b5ec2899305439122285aa4a9"
