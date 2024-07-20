@@ -31,6 +31,7 @@ RDEPEND="
 	dev-libs/libxml2
 	sys-fs/lvm2[thin]
 	net-misc/openssh
+	net-misc/sshpass
 	|| ( net-misc/curl net-misc/wget )
 	hack-file-dependencies? (
 		>=app-emulation/libguestfs-1.36.4
