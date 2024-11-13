@@ -34,6 +34,8 @@ List of available packages (and why they are here):
   - lower version dependency (based on ebuild 2.2.3) for `app-text/grip` (to allow `app-text/grip` and `dev-python/o-must-gather` at same time)
 - dev-go/omc
   - packaging of https://github.com/gmeghnag/omc version 3.2.0
+- dev-go/kube-compare
+  - packaging of https://github.com/openshift/kube-compare version 0.3.0
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
