@@ -39,6 +39,8 @@ List of available packages (and why they are here):
   - packaging of https://github.com/gmeghnag/omc version 3.2.0
 - dev-go/kube-compare
   - packaging of https://github.com/openshift/kube-compare version 0.3.0
+- gui-apps/waybar
+  - gui-apps/waybar ebuild without hardcoded dependency on pipewire
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
