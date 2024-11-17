@@ -24,6 +24,9 @@ List of available packages (and why they are here):
   - release version of fast-vm-repo
 - sys-firmware/radxa-rock5b-firmware
   - (arm64) packaged binary firmware blobk for Mali 620 GPU on Radxa ROCK5B SBC
+  - to-be-remove - replaced by sys-firmware/mali-g610-firmware
+- sys-firmware/mali-g610-firmware
+  - (arm64) packaged binary firmware blob for Mali G610 GPU found on RK3588 SOCs
 - media-libs/mesa
   - (arm64) panfork/mesa build with some support for Mali G610 GPU
 - dev-python/o-must-gather
