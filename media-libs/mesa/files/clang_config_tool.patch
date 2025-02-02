@@ -1,0 +1,11 @@
+--- a/meson.build	2022-12-10 09:57:43.000000000 +0900
++++ b/meson.build	2025-01-06 00:24:08.877401333 +0900
+@@ -1844,7 +1844,7 @@
+       or _llvm == 'enabled'
+     ),
+     static : not _shared_llvm,
+-    method : _llvm_method,
++    method : 'config-tool',
+     fallback : ['llvm', 'dep_llvm'],
+     include_type : 'system',
+   )

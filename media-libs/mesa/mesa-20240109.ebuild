@@ -96,6 +96,11 @@ RDEPEND="${RDEPEND}
 	video_cards_radeonsi? ( ${LIBDRM_DEPSTRING}[video_cards_amdgpu] )
 "
 
+PATCHES=(
+	# Workaround the CMake dependency lookup returning a different LLVM to llvm-config, bug #907965
+	"${FILESDIR}/clang_config_tool.patch"
+)
+
 # Please keep the LLVM dependency block separate. Since LLVM is slotted,
 # we need to *really* make sure we're not pulling one than more slot
 # simultaneously.
@@ -107,12 +112,12 @@ RDEPEND="${RDEPEND}
 LLVM_MAX_SLOT="16"
 LLVM_DEPSTR="
 	|| (
-		sys-devel/llvm:16[${MULTILIB_USEDEP}]
-		sys-devel/llvm:15[${MULTILIB_USEDEP}]
-		sys-devel/llvm:14[${MULTILIB_USEDEP}]
-		sys-devel/llvm:13[${MULTILIB_USEDEP}]
+		llvm-core/llvm:16[${MULTILIB_USEDEP}]
+		llvm-core/llvm:15[${MULTILIB_USEDEP}]
+		llvm-core/llvm:14[${MULTILIB_USEDEP}]
+		llvm-core/llvm:13[${MULTILIB_USEDEP}]
 	)
-	<sys-devel/llvm-$((LLVM_MAX_SLOT + 1)):=[${MULTILIB_USEDEP}]
+	<llvm-core/llvm-$((LLVM_MAX_SLOT + 1)):=[${MULTILIB_USEDEP}]
 "
 LLVM_DEPSTR_AMDGPU=${LLVM_DEPSTR//]/,llvm_targets_AMDGPU(-)]}
 CLANG_DEPSTR=${LLVM_DEPSTR//llvm/clang}
@@ -215,9 +220,9 @@ llvm_check_deps() {
 	fi
 
 	if use opencl; then
-		has_version "sys-devel/clang:${LLVM_SLOT}[${flags}]" || return 1
+		has_version "llvm-core/clang:${LLVM_SLOT}[${flags}]" || return 1
 	fi
-	has_version "sys-devel/llvm:${LLVM_SLOT}[${flags}]"
+	has_version "llvm-core/llvm:${LLVM_SLOT}[${flags}]"
 }
 
 pkg_pretend() {
@@ -287,8 +292,8 @@ python_check_deps() {
 
 pkg_setup() {
 	# warning message for bug 459306
-	if use llvm && has_version sys-devel/llvm[!debug=]; then
-		ewarn "Mismatch between debug USE flags in media-libs/mesa and sys-devel/llvm"
+	if use llvm && has_version llvm-core/llvm[!debug=]; then
+		ewarn "Mismatch between debug USE flags in media-libs/mesa and llvm-core/llvm"
 		ewarn "detected! This can cause problems. For details, see bug 459306."
 	fi
 
