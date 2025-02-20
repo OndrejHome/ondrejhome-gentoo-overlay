@@ -41,6 +41,8 @@ List of available packages (and why they are here):
   - packaging of https://github.com/openshift/kube-compare version 0.3.0
 - gui-apps/waybar
   - gui-apps/waybar ebuild without hardcoded dependency on pipewire
+- dev-python/jira
+  - test packaging of jira module from pypy (3.8.0)
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
