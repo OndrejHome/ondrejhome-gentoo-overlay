@@ -1,0 +1,13 @@
+diff --git a/configure.ac b/configure.ac
+index 0425a9d..6dbac27 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -293,8 +293,6 @@ fi
+ dnl Ensure PYTHON is an absolute path
+ AC_PATH_PROG([PYTHON], [$PYTHON])
+ 
+-AC_PYTHON_MODULE(pexpect, 1)
+-AC_PYTHON_MODULE(pycurl, 1)
+ AC_PYTHON_MODULE(requests, 1)
+ 
+ AC_PYTHON_MODULE(boto3)
