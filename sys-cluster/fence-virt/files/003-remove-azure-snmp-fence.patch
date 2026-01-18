@@ -1,0 +1,19 @@
+--- a/lib/Makefile.am	2026-01-18 05:12:19.913109719 +0000
++++ b/lib/Makefile.am	2026-01-18 05:12:35.009801943 +0000
+@@ -1,6 +1,6 @@
+ MAINTAINERCLEANFILES	= Makefile.in
+ 
+-TARGET			= fencing.py fencing_snmp.py azure_fence.py
++TARGET			= fencing.py
+ 
+ if BUILD_XENAPILIB
+ TARGET			+= XenAPI.py
+@@ -24,8 +24,6 @@
+ 
+ rng_DATA		= $(XSL) $(FASRNG)
+ 
+-azure_fence.py: fencing.py
+-fencing_snmp.py: fencing.py
+ check_used_options.py: fencing.py
+ 
+ include $(top_srcdir)/make/fencebuild.mk

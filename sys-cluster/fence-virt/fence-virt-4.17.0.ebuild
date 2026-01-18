@@ -23,7 +23,10 @@ DEPEND="
 RDEPEND="${DEPEND}"
 
 #PATCHES=("${FILESDIR}/001-do-not-generate-EnvironmentFile.patch")
-PATCHES=("${FILESDIR}/002-disablepexpect-pycurl.patch")
+PATCHES=(
+	"${FILESDIR}"/002-disablepexpect-pycurl.patch 
+	"${FILESDIR}"/003-remove-azure-snmp-fence.patch
+)
 
 src_configure() {
 	./autogen.sh
@@ -33,6 +36,7 @@ src_configure() {
 src_install() {
 	default
 	systemd_dounit agents/virt/fence_virtd.service
+	find "${ED}" -type f -name '*.la' -delete || die
 	# FIXME openrc initd file
 	#newinitd fence_virtd.init fence_virtd
 	# FIXME - why fence_axure/fence_snmp ??
