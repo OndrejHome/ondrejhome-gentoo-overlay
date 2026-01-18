@@ -1,0 +1,8 @@
+--- a/agents/virt/Makefile.am	2026-01-18 01:51:27.140172372 +0000
++++ b/agents/virt/Makefile.am	2026-01-18 05:38:56.417136180 +0000
+@@ -27,5 +27,4 @@
+ 	SBINDIR="@sbindir@"; \
+ 	INITCONFDIR="@initconfdir@"; \
+ 	cat $^ > $@ ; \
+-	echo "EnvironmentFile=-$$INITCONFDIR/fence_virtd" >> $@ ;\
+ 	echo "ExecStart=$$SBINDIR/fence_virtd \$$FENCE_VIRTD_ARGS" >> $@
