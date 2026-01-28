@@ -51,6 +51,10 @@ List of available packages (and why they are here):
   - ansible-core 2.16 compatible ansible-compat (dependency for ansible-lint)
 - app-misc/dyff
   - simple packaging of https://github.com/homeport/dyff version 1.10.1
+- dev-util/dh-autoreconf
+  - simple packaging of dh-autoreconf from Debian
+- dev-perl/File-StripNondeterminism
+  - simple packaging of strip-nondeterminism from Debian
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
