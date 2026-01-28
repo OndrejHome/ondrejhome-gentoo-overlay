@@ -55,6 +55,10 @@ List of available packages (and why they are here):
   - simple packaging of dh-autoreconf from Debian
 - dev-perl/File-StripNondeterminism
   - simple packaging of strip-nondeterminism from Debian
+- dev-python/requests-download
+  - copy of dev-python/requests-download from gentoo repo with enabled python 3.13
+- dev-util/rpmdevtools
+  - copy of dev-util/rpmdevtools from gentoo repo with enabled python 3.13
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
