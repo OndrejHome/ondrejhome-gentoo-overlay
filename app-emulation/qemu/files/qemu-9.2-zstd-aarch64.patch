@@ -1,0 +1,235 @@
+From 0d0ba249099b8d5a78887576c0f332540939a8ce Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Mon, 24 Nov 2025 13:35:18 +0100
+Subject: [PATCH] hw/loader: Rename LOAD_IMAGE_MAX _GUNZIP_BYTES to
+ _DECOMPRESSED_BYTES
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Preparation for adding support for zstd compressed efi zboot kernel
+images.
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+Message-ID: <20251124123521.1058183-2-daan.j.demeyer@gmail.com>
+[PMD: Wrap long line to avoid checkpatch.pl warning]
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/arm/boot.c            | 4 ++--
+ hw/core/loader.c         | 9 +++++----
+ hw/nvram/fw_cfg.c        | 3 ++-
+ include/hw/loader.h | 2 +-
+ 4 files changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index e22609de93..c97d4c4e11 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -854,14 +854,14 @@
+ static uint64_t load_aarch64_image(const char *filename, hwaddr mem_base,
+                                    hwaddr *entry, AddressSpace *as)
+ {
++    const size_t max_bytes = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
+     hwaddr kernel_load_offset = KERNEL64_LOAD_ADDR;
+     uint64_t kernel_size = 0;
+     uint8_t *buffer;
+     int size;
+ 
+     /* On aarch64, it's the bootloader's job to uncompress the kernel. */
+-    size = load_image_gzipped_buffer(filename, LOAD_IMAGE_MAX_GUNZIP_BYTES,
+-                                     &buffer);
++    size = load_image_gzipped_buffer(filename, max_bytes, &buffer);
+ 
+     if (size < 0) {
+         gsize len;
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index f4581f76b9..79cb96b466 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -829,8 +829,8 @@ ssize_t load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
+         goto out;
+     }
+ 
+-    if (max_sz > LOAD_IMAGE_MAX_GUNZIP_BYTES) {
+-        max_sz = LOAD_IMAGE_MAX_GUNZIP_BYTES;
++    if (max_sz > LOAD_IMAGE_MAX_DECOMPRESSED_BYTES) {
++        max_sz = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
+     }
+ 
+     data = g_malloc(max_sz);
+@@ -896,6 +896,7 @@ struct linux_efi_zboot_header {
+  */
+ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+ {
++    const size_t max_bytes = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
+     const struct linux_efi_zboot_header *header;
+     uint8_t *data = NULL;
+     ssize_t ploff, plsize;
+@@ -931,8 +932,8 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+         return -1;
+     }
+ 
+-    data = g_malloc(LOAD_IMAGE_MAX_GUNZIP_BYTES);
+-    bytes = gunzip(data, LOAD_IMAGE_MAX_GUNZIP_BYTES, *buffer + ploff, plsize);
++    data = g_malloc(max_bytes);
++    bytes = gunzip(data, max_bytes, *buffer + ploff, plsize);
+     if (bytes < 0) {
+         fprintf(stderr, "failed to decompress EFI zboot image\n");
+         g_free(data);
+diff --git a/hw/nvram/fw_cfg.c b/hw/nvram/fw_cfg.c
+index 437ab6e210..69e9736145 100644
+--- a/hw/nvram/fw_cfg.c
++++ b/hw/nvram/fw_cfg.c
+@@ -1115,7 +1115,8 @@ void load_image_to_fw_cfg(FWCfgState *fw_cfg, uint16_t size_key,
+ 
+     if (try_decompress) {
+         size = load_image_gzipped_buffer(image_name,
+-                                         LOAD_IMAGE_MAX_GUNZIP_BYTES, &data);
++                                         LOAD_IMAGE_MAX_DECOMPRESSED_BYTES,
++                                         &data);
+     }
+ 
+     if (size == (size_t)-1) {
+diff --git a/include/hw/loader.h b/include/hw/loader.h
+index 6f91703503..1f14dccbca 100644
+--- a/include/hw/loader.h
++++ b/include/hw/loader.h
+@@ -82,7 +82,7 @@ ssize_t load_image_mr(const char *filename, MemoryRegion *mr);
+  * load_image_gzipped_buffer() will read. It prevents
+  * g_malloc() in those functions from allocating a huge amount of memory.
+  */
+-#define LOAD_IMAGE_MAX_GUNZIP_BYTES (256 << 20)
++#define LOAD_IMAGE_MAX_DECOMPRESSED_BYTES (256 << 20)
+ 
+ ssize_t load_image_gzipped_buffer(const char *filename, uint64_t max_sz,
+                                   uint8_t **buffer);
+-- 
+GitLab
+
+From 3fd0734cb392b10ef1e2457828c247ef015b0944 Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Mon, 24 Nov 2025 13:35:20 +0100
+Subject: [PATCH] hw/loader: Use g_autofree in unpack_efi_zboot_image()
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+Message-ID: <20251124123521.1058183-4-daan.j.demeyer@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/core/loader.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 21204a0cb9..4952443fe5 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -898,7 +898,7 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+ {
+     const size_t max_bytes = LOAD_IMAGE_MAX_DECOMPRESSED_BYTES;
+     const struct linux_efi_zboot_header *header;
+-    uint8_t *data = NULL;
++    g_autofree uint8_t *data = NULL;
+     int ploff, plsize;
+     ssize_t bytes;
+ 
+@@ -936,12 +936,11 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+     bytes = gunzip(data, max_bytes, *buffer + ploff, plsize);
+     if (bytes < 0) {
+         fprintf(stderr, "failed to decompress EFI zboot image\n");
+-        g_free(data);
+         return -1;
+     }
+ 
+     g_free(*buffer);
+-    *buffer = g_realloc(data, bytes);
++    *buffer = g_realloc(g_steal_pointer(&data), bytes);
+     *size = bytes;
+     return bytes;
+ }
+-- 
+GitLab
+
+From 3a18e8a25992d1643707e2cebdd6e9bb2bd7d3b9 Mon Sep 17 00:00:00 2001
+From: Daan De Meyer <daan.j.demeyer@gmail.com>
+Date: Mon, 24 Nov 2025 13:35:21 +0100
+Subject: [PATCH] hw/loader: Add support for zboot images compressed with zstd
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Daan De Meyer <daan.j.demeyer@gmail.com>
+Message-ID: <20251124123521.1058183-5-daan.j.demeyer@gmail.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/core/loader.c | 30 +++++++++++++++++++++---------
+ 1 file changed, 21 insertions(+), 9 deletions(-)
+
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 4952443fe5..5cbfba0a86 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -68,6 +68,11 @@
+ 
+ #include <zlib.h>
+ 
++#ifdef CONFIG_ZSTD
++#include <zstd.h>
++#include <zstd_errors.h>
++#endif
++
+ static int roms_loaded;
+ 
+ /* return the size or -1 if error */
+@@ -916,14 +921,6 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+         return 0;
+     }
+ 
+-    if (strcmp(header->compression_type, "gzip") != 0) {
+-        fprintf(stderr,
+-                "unable to handle EFI zboot image with \"%.*s\" compression\n",
+-                (int)sizeof(header->compression_type) - 1,
+-                header->compression_type);
+-        return -1;
+-    }
+-
+     ploff = ldl_le_p(&header->payload_offset);
+     plsize = ldl_le_p(&header->payload_size);
+ 
+@@ -933,7 +930,22 @@ ssize_t unpack_efi_zboot_image(uint8_t **buffer, ssize_t *size)
+     }
+ 
+     data = g_malloc(max_bytes);
+-    bytes = gunzip(data, max_bytes, *buffer + ploff, plsize);
++
++    if (strcmp(header->compression_type, "gzip") == 0) {
++        bytes = gunzip(data, max_bytes, *buffer + ploff, plsize);
++#ifdef CONFIG_ZSTD
++    } else if (strcmp(header->compression_type, "zstd") == 0) {
++        size_t ret = ZSTD_decompress(data, max_bytes, *buffer + ploff, plsize);
++        bytes = ZSTD_isError(ret) ? -1 : (ssize_t) ret;
++#endif
++    } else {
++        fprintf(stderr,
++                "unable to handle EFI zboot image with \"%.*s\" compression\n",
++                (int)sizeof(header->compression_type) - 1,
++                header->compression_type);
++        return -1;
++    }
++
+     if (bytes < 0) {
+         fprintf(stderr, "failed to decompress EFI zboot image\n");
+         return -1;
+-- 
+GitLab
+
