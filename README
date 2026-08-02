@@ -27,8 +27,6 @@ List of available packages (and why they are here):
   - to-be-remove - replaced by sys-firmware/mali-g610-firmware
 - sys-firmware/mali-g610-firmware
   - (arm64) packaged binary firmware blob for Mali G610 GPU found on RK3588 SOCs
-- media-libs/mesa
-  - (arm64) panfork/mesa build with some support for Mali G610 GPU
 - dev-python/o-must-gather
   - packaging of https://github.com/kxr/o-must-gather/tree/v1 version 1.2.6
 - dev-python/click
