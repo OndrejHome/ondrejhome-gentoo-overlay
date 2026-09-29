@@ -63,6 +63,8 @@ List of available packages (and why they are here):
   - (aarch64) backport patch for enabling to boot ZSTD compressed kernels to 9.2.4 and 10.2.2
 - sys-block/nvmetcli-fb
   - simple packaging of nvmetcli from master branch and commit on date 2026-07-13 (0.8_p20260713)
+- sci-misc/llama-cpp
+  - PrismML-Eng fork of llama-cpp with support for PQ1/PQ2 (Bonsai models)
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
