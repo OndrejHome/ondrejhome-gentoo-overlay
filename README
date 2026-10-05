@@ -65,6 +65,10 @@ List of available packages (and why they are here):
   - simple packaging of nvmetcli from master branch and commit on date 2026-07-13 (0.8_p20260713)
 - sci-misc/llama-cpp
   - PrismML-Eng fork of llama-cpp with support for PQ1/PQ2 (Bonsai models)
+- app-emulation/qemu/qemu *_p1
+  - dependecy for matching sys-firmware/seabios-bin *_p1
+- sys-firmware/seabios-bin *_p1
+  - patched seabios ugly workaround for nvme boot with qemu 10.x+
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
