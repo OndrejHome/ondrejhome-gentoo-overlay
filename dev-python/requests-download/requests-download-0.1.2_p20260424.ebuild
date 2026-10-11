@@ -4,7 +4,7 @@
 EAPI=8
 
 DISTUTILS_USE_PEP517=flit
-PYTHON_COMPAT=( python3_{10..13} pypy3 )
+PYTHON_COMPAT=( python3_{10..14} pypy3 )
 
 inherit distutils-r1
 
@@ -15,10 +15,9 @@ HOMEPAGE="
 	https://pypi.org/project/requests_download/
 "
 SRC_URI="
-	https://github.com/takluyver/requests_download/archive/${PV}.tar.gz
-		-> ${MY_P}.gh.tar.gz
+	https://kr.famera.cz/large_files/requests_download-master-20260424.gh.tar.gz
 "
-S=${WORKDIR}/${MY_P}
+S=${WORKDIR}/requests_download-master
 
 LICENSE="MIT"
 SLOT="0"
