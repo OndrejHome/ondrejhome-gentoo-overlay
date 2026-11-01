@@ -8,8 +8,6 @@ List of available packages (and why they are here):
   - release version of fast-vm
 - app-emulation/guestfs-tools
   - (x86_64, arm64) 1.50.1 release
-- app-emulation/libguestfs
-  - (x86_64, arm64) 1.50.1 release
 - app-emulation/libguestfs-appliance
   - (x86_64, arm64) custom appliance generated from Fedora 38 (x86_64 and arm64)
 - sys-cluster/fence-virt
