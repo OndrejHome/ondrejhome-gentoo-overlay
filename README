@@ -61,6 +61,8 @@ List of available packages (and why they are here):
   - dependecy for matching sys-firmware/seabios-bin *_p1
 - sys-firmware/seabios-bin *_p1
   - patched seabios ugly workaround for nvme boot with qemu 10.x+
+- sci-misc/radiance
+  - simple packaging of radiance version 1.17.0
 
 To add this repo you can use following commands that will download overlay definition
 into /etc/portage/repos.conf/ directory. Note that you will need to have installed
